@@ -1,0 +1,23 @@
+<template name="foodPlace">
+    <div class="data-record">
+        <legend><span class="glyphicon glyphicon-user" aria-hidden="true" ></span>{{name}}</legend>
+        <div class="row col-sm-10">
+            <div class="col-sm-5">
+                <div>
+                    <p><span class="glyphicon glyphicon-envelope" aria-hidden="true" ></span>{{foodPlace_email}}</p>
+                </div>
+                <div>
+                    <p><span class="glyphicon glyphicon-phone" aria-hidden="true" ></span>{{foodPlace_phone}}</p>
+                </div>
+                <div>
+                    <p><span class="glyphicon glyphicon-yen" aria-hidden="true" ></span>{{foodPlace_type}}</p>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <h4>Address</h4>
+                <p>{{foodPlace_location}}, {{foodPlace_city}}</p>
+                <p> {{foodPlace_state}},{{foodPlace_country}}</p>
+            </div>
+        </div>
+    </div>
+</template>
