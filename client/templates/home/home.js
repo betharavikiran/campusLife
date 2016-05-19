@@ -1,5 +1,8 @@
-this.LoginController = RouteController.extend({
-    template: "Login",
+/**
+ * Created by betha on 5/18/2016.
+ */
+this.HomeController = RouteController.extend({
+    template: "home",
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
@@ -35,20 +38,3 @@ this.LoginController = RouteController.extend({
 
     }
 });
-
-Template.Login.events({
-    'click #facebook-login':function(event){
-        Meteor.loginWithFacebook({},function(err){
-           if(err){
-               throw new Meteor.Error("Facebook login failed");
-           } 
-           else{
-              Router.go('home');    
-           }
-        });
-    } 
-});
-
-Template.Login.rendered = function(){
-    $('body').addClass('showmap');
-}

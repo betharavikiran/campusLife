@@ -1,27 +1,46 @@
+this.LogoutController = RouteController.extend({
+    template: "logout",
 
-/*******************OnCreated*******************/
-Template.logout.onCreated(function() {
-    var self = this;
-    Session.set("filterByCompleteStatus", 'All');
 
-    this.autorun(function() {
+    yieldTemplates: {
+        /*YIELD_TEMPLATES*/
+    },
 
-       // Clear all the state info in the session
-       Session.set('selectedCompleteOrderDate','');
-       Session.set('selectedCompleteOrderDateNext','');
-       Session.set('selectedOrderDate','');
-       Session.set('selectedOrderDateNext','');
-       Session.set('currentPage','');
-       Session.set('currentCompletePage','');
-       Session.set('currentRechargesPage','');
-       Session.set('profileUpdateResult','');
+    onBeforeAction: function() {
+        this.next();
+    },
 
-       Session.setPersistent("store_ID",'');
-       Session.setPersistent('owner','');
-       Session.setPersistent('address_location', '');
-       Session.setPersistent('store_name','');
-       Session.setPersistent('phone', '');
-       Session.setPersistent('city','');
+    action: function() {
+        if(this.isReady()) { this.render(); } else { this.render("loading"); }
+        /*ACTION_FUNCTION*/
+    },
 
-    });
+    isReady: function() {
+
+
+        var subs = [];
+        var ready = true;
+        _.each(subs, function(sub) {
+            if(!sub.ready())
+                ready = false;
+        });
+        return ready;
+    },
+
+    data: function() {
+
+
+        return {
+            params: this.params || {}
+        };
+        /*DATA_FUNCTION*/
+    },
+
+    onAfterAction: function() {
+
+    }
 });
+
+
+
+

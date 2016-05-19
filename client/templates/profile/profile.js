@@ -1,6 +1,8 @@
-this.LogoutController = RouteController.extend({
-    template: "logout",
-
+/**
+ * Created by betha on 5/18/2016.
+ */
+this.ProfileController = RouteController.extend({
+    template: "profile",
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
@@ -11,13 +13,11 @@ this.LogoutController = RouteController.extend({
     },
 
     action: function() {
-        if(this.isReady()) { this.render(); } else { this.render("loading"); }
-        /*ACTION_FUNCTION*/
+
+        this.render();
     },
 
-    isReady: function() {
-
-
+    subscriptionSetup: function() {
         var subs = [];
         var ready = true;
         _.each(subs, function(sub) {
@@ -28,8 +28,6 @@ this.LogoutController = RouteController.extend({
     },
 
     data: function() {
-
-
         return {
             params: this.params || {}
         };
@@ -40,5 +38,3 @@ this.LogoutController = RouteController.extend({
 
     }
 });
-
-

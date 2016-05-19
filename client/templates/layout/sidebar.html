@@ -7,24 +7,23 @@
     <div class="sidebar expand">
         <div class="sidebarwrap">
             <div class="sidelogo"><i>Campus Life</i></div>
+            {{currentUser}}
             <ul class="sidenav">
-                <h5 class="sidelabel">Around Me<i class="fa fa-map-marker" aria-hidden="true"></i></h5>
-                <h5 class="sidelabel">Search<i class="fa fa-binoculars" aria-hidden="true"></i></h5>
                 <li>
-                    <a class="recentSearch" href="" title="recentSearch">Recent<i class="fa fa-history" aria-hidden="true"></i></a>
+                    <a class="home" href="{{pathFor 'home'}}" title="home">Home<i class="fa fa-home" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                    <a class="recentSearch" href="" title="recentSearch">New<i class="fa fa-plus" aria-hidden="true"></i></a>
+                    <a class="search" href="{{pathFor 'search'}}" title="search">Search<i class="fa fa-search" aria-hidden="true"></i></a>
                 </li>
                 <h5 class="sidelabel">Account<i class="fa fa-user" aria-hidden="true"></i></h5>
                 <li>
-                    <a class="recentSearch" href="" title="recentSearch">Profile</a>
+                    <a class="profile" href="{{pathFor 'profile'}}" title="profile">Profile<i class="fa fa-user" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                    <a class="recentSearch" href="" title="recentSearch">Preferences<i class="fa fa-sliders" aria-hidden="true"></i></a>
+                    <a class="preferences" href="{{pathFor 'preferences'}}" title="preferences">Preferences<i class="fa fa-sliders" aria-hidden="true"></i></a>
                 </li>
                 <li>
-                    <a class="recentSearch" href="" title="recentSearch">Logoff<i class="fa fa-sign-out" aria-hidden="true"></i></a>
+                    <a id="logout" class="logoff" href="{{pathFor 'logoff'}}" title="logoff">Logoff<i class="fa fa-sign-out" aria-hidden="true"></i></a>
                 </li>
             </ul>
             <div class="sidefooter">

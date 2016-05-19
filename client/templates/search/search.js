@@ -1,8 +1,8 @@
 /**
  * Created by betha on 5/17/2016.
  */
-this.AroundMeController = RouteController.extend({
-    template: "aroundMe",
+this.SearchController = RouteController.extend({
+    template: "search",
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/
@@ -38,3 +38,4 @@ this.AroundMeController = RouteController.extend({
 
     }
 });
+

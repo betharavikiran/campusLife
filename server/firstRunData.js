@@ -19,7 +19,9 @@ Meteor.startup(function() {
                 institution_email:"",
                 institution_phone:"0891 2714584",
                 institution_ltd:"17.741009",
-                institution_lng:"83.338363"
+                institution_lng:"83.338363",
+                courses:["BCA","MCA","BBA","MBA"]
+
             },
             {
                 name:"Aditya Degree College",
@@ -32,7 +34,8 @@ Meteor.startup(function() {
                 institution_email:"",
                 institution_phone:"0891 274356",
                 institution_ltd:"17.728163",
-                institution_lng:"83.310350"
+                institution_lng:"83.310350",
+                courses:["BCA","MCA"]
             },
             {
                 name:"AGL Degree College",
@@ -45,7 +48,8 @@ Meteor.startup(function() {
                 institution_email:"",
                 institution_phone:"0891 2735373",
                 institution_ltd:"17.728680",
-                institution_lng:"83.312934"
+                institution_lng:"83.312934",
+                courses:["BBA","MBA"]
             },
         ];
 
@@ -151,5 +155,38 @@ Meteor.startup(function() {
 
     }
 
+    if (courses.find().count() === 0) {
 
+        // create sample employees
+        var sample_courses = [
+            {
+                name:"Bachelors of Computer Applications",
+                course_type:"Degree",
+                course_duration:36,
+                course_keywords:["BCA"]
+            },
+            {
+                name:"Bachelors of Business Administration",
+                course_type:"Degree",
+                course_duration:36,
+                course_keywords:["BBA"]
+            },
+            {
+                name:"Masters of Business Administration",
+                course_type:"Masters",
+                course_duration:24,
+                course_keywords:["MBA"]
+            },
+            {
+                name:"Masters of Computer Applications",
+                course_type:"Masters",
+                course_duration:24,
+                course_keywords:["MCA"]
+            },
+        ];
+
+        _.each(sample_courses, function(course) {
+            courses.insert(course);
+        });
+   }
 });

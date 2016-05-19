@@ -40,3 +40,22 @@ Template.institutions.helpers({
         return institutions.find().fetch();
     },
 });
+
+
+/*******************OnCreated*******************/
+Template.institutions.onCreated(function() {
+    var self = this;
+    Session.set("filterByCourse", 'All');
+
+    this.autorun(function() {
+        var subscriptionCourses = self.subscribe('InstitutionsByCourse',Session.get('filterByCourse'));
+    });
+});
+
+Template.institutions.events({
+        'change #filterByCourse' : function (event) {
+            event.preventDefault();
+            Session.set("filterByCourse", event.target.value);
+        },
+    }
+);

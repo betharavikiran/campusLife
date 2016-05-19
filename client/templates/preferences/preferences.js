@@ -1,5 +1,8 @@
-this.LoginController = RouteController.extend({
-    template: "Login",
+/**
+ * Created by betha on 5/18/2016.
+ */
+this.PreferencesController = RouteController.extend({
+    template: "preferences",
 
     yieldTemplates: {
         /*YIELD_TEMPLATES*/

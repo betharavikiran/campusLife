@@ -7,10 +7,11 @@
 
 // Object to represent Education institutions
 institutions = new Mongo.Collection("institutions");
+communities = new Mongo.Collection("communities");
 courses = new Mongo.Collection("courses");
 accomodations = new Mongo.Collection("accomodations");
 foodPlaces = new Mongo.Collection("foodPlaces");
-studentConcessions = new Mongo.Collection("studentConcessions");
+//studentConcessions = new Mongo.Collection("studentConcessions");
 
 //
 //Tution
@@ -91,6 +92,9 @@ Schema.institutions = new SimpleSchema({
         label: "Institution Longitude",
         optional: true
     },
+    courses:{
+        type:[String]
+    }
 });
 
 institutions.attachSchema(Schema.institutions, {transform: true});
@@ -196,3 +200,43 @@ Schema.foodPlaces = new SimpleSchema({
 });
 
 foodPlaces.attachSchema(Schema.foodPlaces, {transform: true});
+
+Schema.courses = new SimpleSchema({
+    name:{
+        type:String,
+        label:"Course Name"
+    },
+    course_type:{
+       type:String,
+       label:"Course Type",
+       allowedValues: ["Certification","Degree","Professional","Masters"],
+    },
+    course_duration:{
+        type:Number,
+        label:"Months"
+    },
+    course_keywords:{
+        type:[String]
+    }
+});
+
+courses.attachSchema(Schema.courses,{transform: true});
+
+Schema.communities = new SimpleSchema({
+   name:{
+       type:String,
+       label:"Community Name"
+   },
+   community_type:{
+        type:String,
+        label:"Community Type",
+        allowedValues:["Institution","Course"]
+   },
+   entity_id:{
+        type:String,
+   },
+   memberships:{
+       type:[String]
+   }
+});
+

@@ -1,0 +1,46 @@
+.content-right{
+    float:right
+}
+
+.display-list{
+    padding: 5px;
+    background-color: white;
+    border-top: solid 1px lightgray;
+    border-botton: solid 2px lightgray;
+}
+
+.data-record{
+    margin-top: 5px;
+    padding: 10px;
+    background-color: white;
+    color:darkgray;
+    font-weight: 300;
+    font-size: small;
+}
+
+.record-header{
+    font-weight: 500;
+    font-size: medium;
+    padding: 5px;
+    color:black;
+}
+ .header-tag{
+    font-weight: 200;
+    font-size: small;
+}
+
+.record-section {
+    padding: 5px;
+}
+
+.nearby{
+    font-weight: 300;
+    padding: 5px;
+    color:dodgerblue;
+    background-color: #fafafa;
+    border-bottom: solid 2px #eeeeee;
+}
+
+.nearby-item{
+    font-size: 19px;
+}

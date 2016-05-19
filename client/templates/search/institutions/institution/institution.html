@@ -1,0 +1,38 @@
+<template name="institution">
+    <div class="record-header">
+       <i class="fa fa-university" aria-hidden="true"></i>{{name}}
+    </div>
+    <div class="data-record">
+        <div >
+            <div class="header-tag">Established in {{institution_est_year}}</div>
+        </div>
+        <div class="row ">
+            <div class="col-sm-8">
+                <div class="record-section col-sm-4">
+                    <p> <i class="fa fa-envelope-o" aria-hidden="true"></i>{{institution_email}}</p>
+                    <p> <i class="fa fa-phone" aria-hidden="true"></i>{{institution_phone}}</p>
+                </div>
+                <div class="record-section col-sm-4">
+                    <h4><i class="fa fa-map-marker" aria-hidden="true"></i>Address</h4>
+                    <p>{{institution_location}}, {{institution_city}}</p>
+                    <p> {{institution_state}},{{institution_country}}</p>
+                    <p>{{institution_ltd}} {{institution_lng}} </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="nearby">
+        <h4>Near By</h4>
+        <div class="row">
+            <div class="col-sm-8">
+                <div class="nearby-item col-sm-1">
+                    <a><i class="fa fa-bed" aria-hidden="true"></i></a>
+                </div>
+                <div class="nearby-item col-sm-1">
+                    <a><i class="fa fa-cutlery" aria-hidden="true"></i></a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</template>

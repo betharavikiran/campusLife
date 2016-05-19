@@ -1,0 +1,24 @@
+<template name="institutions">
+    <div class="page-content-wrapper">
+        <div class="row col-sm-6">
+            <div class="col-sm-3">
+                <h4>Course</h4>
+            </div>
+            <div class="col-sm-offset-3">
+                <select id="filterByCourse">
+                    <option value="All" selected>Courses (ALL)</option>
+                    <option value="BCA">Bachelors in Computer Applications</option>
+                    <option value="MCA">Masters in Computer Applications</option>
+                    <option value="BBA">Bachelors in Business Administration</option>
+                    <option value="MBA">Masters in Business Administration</option>
+                </select>
+            </div>
+        </div>
+        <legend>Institutions</legend>
+        <div class="display-list">
+        {{#each institutions}}
+            {{>institution}}
+        {{/each}}
+        </div>
+    </div>
+</template>
