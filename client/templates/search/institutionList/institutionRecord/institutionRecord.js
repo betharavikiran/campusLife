@@ -1,9 +1,9 @@
 /**
  * Created by betha on 5/18/2016.
  */
-this.InstitutionController = RouteController.extend(
+this.InstitutionRecordController = RouteController.extend(
     {
-        template:"institution",
+        template:"institutionRecord",
 
         onBeforeAction: function() {
             this.next();
@@ -35,6 +35,13 @@ this.InstitutionController = RouteController.extend(
     }
 );
 
-Template.institution.helpers({
+Template.institutionRecord.helpers({
     
+});
+
+Template.institutionRecord.events({
+   'click #btn-nearby':function(event){
+       Session.set("current-InstitutionRecord",this);
+       Router.go("institutionInfo");
+   }
 });

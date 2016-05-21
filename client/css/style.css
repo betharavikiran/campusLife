@@ -44,3 +44,75 @@
 .nearby-item{
     font-size: 19px;
 }
+
+.calender{
+    padding: 15px;
+    border: solid 1px lightgray;
+    background-color: white;
+}
+
+.interesting-fact{
+    border: solid 1px lightgray;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.fact-header{
+    font-weight: 500;
+    font-size: medium;
+    border-bottom: solid 1px lightgray;
+    padding-bottom: 5px;
+}
+
+.fact-header{
+    font-weight: 700;
+    font-size: medium;
+    border-bottom: solid 1px lightgray;
+}
+
+.factDescription{
+    font-weight: 300;
+    font-size: small;
+}
+
+.quiz-header{
+    font-weight: 700;
+    font-size: medium;
+    border-bottom: solid 1px lightgray;
+}
+.quiz-content{
+    border: solid 1px lightgray;
+    background-color: white;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+
+.quiz-question{
+    padding-top:10px;
+    padding-bottom:10px;
+    color: black;
+    background-color: white;
+}
+
+
+
+.quiz-options{
+    border: solid 1px #f6f6f6;
+}
+
+.quiz-option{
+    font-weight: 300;
+    font-size: smaller;
+    color: black;
+    padding: 5px;
+}
+
+.quiz-option:hover{
+    background-color:#777777;
+    color:white;
+    font-weight: 300;
+    font-size: smaller;
+
+}

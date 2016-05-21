@@ -241,6 +241,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_middleware-stack/1.0.11/web.browser/lib/middleware_stack.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_middleware-stack/1.0.11/web.browser/lib/handler.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.4/web.browser/id.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/packages/fullcalendar_fullcalendar/dist/fullcalendar.print.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/base64/1.0.8/web.browser/base64.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.10.6/web.browser/packages/momentjs_moment.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/pauloborges_mapbox/2.2.3_2/web.browser/mapbox.css" />
@@ -281,7 +282,11 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/caching-compiler/1.0.4/web.browser/caching-compiler.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_url/1.0.11/web.browser/lib/compiler.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_url/1.0.11/web.browser/lib/url.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/gcal.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/lang-all.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/fullcalendar.css" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/caching-html-compiler/1.0.6/web.browser/caching-html-compiler.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/fullcalendar.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.8/web.browser/hook.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.1/web.browser/match.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.1/web.browser/isPlainObject.js" />
@@ -537,6 +542,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_middleware-stack/1.0.11/web.browser/lib/middleware_stack.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_middleware-stack/1.0.11/web.browser/lib/handler.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/mongo-id/1.0.4/web.browser/id.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/packages/fullcalendar_fullcalendar/dist/fullcalendar.print.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/base64/1.0.8/web.browser/base64.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/momentjs_moment/2.10.6/web.browser/packages/momentjs_moment.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/pauloborges_mapbox/2.2.3_2/web.browser/mapbox.css" />
@@ -577,7 +583,11 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/caching-compiler/1.0.4/web.browser/caching-compiler.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_url/1.0.11/web.browser/lib/compiler.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/iron_url/1.0.11/web.browser/lib/url.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/gcal.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/lang-all.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/fullcalendar.css" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/caching-html-compiler/1.0.6/web.browser/caching-html-compiler.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/fullcalendar_fullcalendar/2.6.1_1/web.browser/dist/fullcalendar.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/callback-hook/1.0.8/web.browser/hook.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.1/web.browser/match.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/check/1.2.1/web.browser/isPlainObject.js" />

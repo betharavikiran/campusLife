@@ -39,7 +39,7 @@ Router.map(function () {
         }
     } });
 
-    this.route("accomodations", {path: "/accomodations", controller: "AccomodationsController",action : function(){
+    this.route("institutionList", {path: "/institutionList", controller: "InstitutionListController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();
@@ -48,7 +48,7 @@ Router.map(function () {
         }
     } });
 
-    this.route("foodPlaces", {path: "/foodPlaces", controller: "FoodPlacesController",action : function(){
+    this.route("institutionRecord", {path: "/institutionRecord", controller: "InstitutionRecordController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();
@@ -57,7 +57,7 @@ Router.map(function () {
         }
     } });
 
-    this.route("institutions", {path: "/institutions", controller: "InstitutionsController",action : function(){
+    this.route("institutionInfo", {path: "/institutionInfo", controller: "InstitutionInfoController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();
@@ -66,8 +66,7 @@ Router.map(function () {
         }
     } });
 
-
-    this.route("accomodation", {path: "/accomodation", controller: "AccomodationController",action : function(){
+    this.route("eventsCalender", {path: "/eventsCalender", controller: "EventsCalenderController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();
@@ -76,7 +75,7 @@ Router.map(function () {
         }
     } });
 
-    this.route("foodPlace", {path: "/foodPlace", controller: "FoodPlaceController",action : function(){
+    this.route("interestingFacts", {path: "/interestingFacts", controller: "InterestingFactsController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();
@@ -85,7 +84,7 @@ Router.map(function () {
         }
     } });
 
-    this.route("institution", {path: "/institution", controller: "InstitutionController",action : function(){
+    this.route("quizs", {path: "/quizs", controller: "QuizsController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
             this.render();

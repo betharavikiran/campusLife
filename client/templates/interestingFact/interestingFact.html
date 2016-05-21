@@ -1,0 +1,19 @@
+<template name="interestingFact">
+    <div class="interesting-fact">
+
+    {{#each interestingFact}}
+    <div class="fact-header"><i class="fa fa-lightbulb-o" aria-hidden="true"></i>{{ factIntroduction }}</div>
+         <div class="row">
+             <div class="col-sm-12">
+                <div class="col-sm-1">
+                    <a href="{{ imageUrl }}" target="_blank"><img src="{{imageUrl}}" height="100px" width="100px" alt="" class="thumbnail" /></a>
+                </div>
+                 <div class="col-sm-11 factDescription">
+                    <p> {{ factDescription }} </p>
+                 </div>
+             </div>
+
+         </div>
+    {{/each}}
+    </div>
+</template>

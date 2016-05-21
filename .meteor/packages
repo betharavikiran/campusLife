@@ -30,3 +30,5 @@ accounts-facebook
 service-configuration
 fortawesome:fontawesome
 twbs:bootstrap
+fullcalendar:fullcalendar
+momentjs:moment

@@ -1,0 +1,12 @@
+<template name="institutionInfo">
+    {{> sidebar}}
+    <div class="rightcontent">
+        About List of Food places
+        {{#each foodplaces}}
+            {{>foodPlace}}
+        {{/each}}
+        <div class="display-list">
+
+        </div>
+    </div>
+</template>

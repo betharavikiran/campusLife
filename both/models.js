@@ -1,17 +1,16 @@
 /**
  * Created by betha on 5/17/2016.
  */
-/**
- * Created by betha on 5/15/2016.
- */
 
-// Object to represent Education institutions
+// Object to represent Education institutionList
 institutions = new Mongo.Collection("institutions");
 communities = new Mongo.Collection("communities");
 courses = new Mongo.Collection("courses");
 accomodations = new Mongo.Collection("accomodations");
 foodPlaces = new Mongo.Collection("foodPlaces");
-//studentConcessions = new Mongo.Collection("studentConcessions");
+eventsCalender = new Mongo.Collection( 'eventsCalender' );
+interestingFacts = new Mongo.Collection('interestingFacts');
+quizs = new Mongo.Collection('quizs')
 
 //
 //Tution
@@ -36,6 +35,15 @@ Schema.preferences = new SimpleSchema({
     }
 });
 
+Schema.courseDef = new SimpleSchema({
+    course:{
+        type:String,
+    },
+    specializations:{
+        type:[String]
+    }
+});
+
 
 Schema.institutions = new SimpleSchema({
     name:{
@@ -49,14 +57,43 @@ Schema.institutions = new SimpleSchema({
     },
 
     institution_est_year:{
-        type:String
+        type:String,
+        label:"Institution Established year",
     },
-
+    institution_govt_private:{
+        type:String,
+        label:"Government or Private",
+        allowedValues:["Government","Private"]
+    },
+    institution_affiliate:{
+        type:String,
+        label:"Institution Affiliate",
+        allowedValues:["Andhra University","Osmanai University","JNTU","GITAM University"],
+    },
     institution_logo:{
        type:String,
         optional:true
     },
+    institution_url:{
+        type:String,
+        label:"Institution URL",
+    },
+    institution_Hostel:{
+        type:String,
+        label:"Avaliability of Hostel Facility",
+        allowedValues:["Available","Not Available"]
+    },
+    institution_coedu_single:{
+        type:String,
+        label:"Co-Education/Mono",
+        allowedValues:["Co-Education", "Only Boys","Only Girls"]
+    },
 
+    institution_transport:{
+      type:String,
+        label:"Transportation available",
+        allowedValues:["Available","Not Available"]
+    },
     institution_location:{
         type:String,
         label:"Location/Area *",
@@ -82,22 +119,29 @@ Schema.institutions = new SimpleSchema({
         type:String,
         label:"Phone *",
     },
-    institution_ltd:{
-        type: String,
-        label: "Institution Latitude",
-        optional: true
+    location: {
+        type: Object,
+        index: '2dsphere',
+        label: 'MongoDB spesific coordinates field'
     },
-    institution_lng:{
+    'location.type': {
         type: String,
-        label: "Institution Longitude",
-        optional: true
+        allowedValues: ['Point'],
+        label: 'Typeof coordinates - Point'
+    },
+    'location.coordinates': {
+        type: [Number],
+        decimal: true,
+        label: 'Array of coordinates in MongoDB style [Lng Lat]'
     },
     courses:{
-        type:[String]
+        type:[Schema.courseDef]
     }
 });
-
+// [{course:"BA",Specialization:{"Arts","Psychology"}}
 institutions.attachSchema(Schema.institutions, {transform: true});
+///institutions._ensureIndex({ "location": "2dsphere"});
+
 
 Schema.accomodations = new SimpleSchema({
     name:{
@@ -136,19 +180,25 @@ Schema.accomodations = new SimpleSchema({
         type:String,
         label:"Phone *",
     },
-    accomodation_ltd:{
-        type: String,
-        label: "accomodation Latitude",
-        optional: true
+    location: {
+        type: Object,
+        index: '2dsphere',
+        label: 'MongoDB spesific coordinates field'
     },
-    accomodation_lng:{
+    'location.type': {
         type: String,
-        label: "accomodation Longitude",
-        optional: true
-    }
+        allowedValues: ['Point'],
+        label: 'Typeof coordinates - Point'
+    },
+    'location.coordinates': {
+        type: [Number],
+        decimal: true,
+        label: 'Array of coordinates in MongoDB style [Lng Lat]'
+    },
 });
 
 accomodations.attachSchema(Schema.accomodations, {transform: true});
+
 
 Schema.foodPlaces = new SimpleSchema({
     name:{
@@ -187,19 +237,28 @@ Schema.foodPlaces = new SimpleSchema({
         type:String,
         label:"Phone *",
     },
-    foodPlace_ltd:{
-        type: String,
-        label: "accomodation Latitude",
-        optional: true
+
+    location: {
+        type: Object,
+        index: '2dsphere',
+        label: 'MongoDB spesific coordinates field'
     },
-    foodPlace_lng:{
+    'location.type': {
         type: String,
-        label: "accomodation Longitude",
-        optional: true
-    }
+        allowedValues: ['Point'],
+        label: 'Typeof coordinates - Point'
+    },
+    'location.coordinates': {
+        type: [Number],
+        decimal: true,
+        label: 'Array of coordinates in MongoDB style [Lng Lat]'
+    },
+//https://forums.meteor.com/t/howto-use-simpleschema-to-fill-geodata-in-database/9855/2
+
 });
 
 foodPlaces.attachSchema(Schema.foodPlaces, {transform: true});
+
 
 Schema.courses = new SimpleSchema({
     name:{
@@ -217,7 +276,7 @@ Schema.courses = new SimpleSchema({
     },
     course_keywords:{
         type:[String]
-    }
+    },
 });
 
 courses.attachSchema(Schema.courses,{transform: true});
@@ -233,10 +292,115 @@ Schema.communities = new SimpleSchema({
         allowedValues:["Institution","Course"]
    },
    entity_id:{
-        type:String,
+        type:String, // link to the institution or course
    },
    memberships:{
        type:[String]
    }
 });
 
+Schema.eventsCalender = new SimpleSchema({
+    'title': {
+        type: String,
+        label: 'The title of this event.'
+    },
+    'start': {
+        type: String,
+        label: 'When this event will start.'
+    },
+    'end': {
+        type: String,
+        label: 'When this event will end.'
+    },
+    'type': {
+        type: String,
+        label: 'What type of event is this?',
+        allowedValues: [ 'Institution', 'Students', 'Public', 'Private','Exam' ]
+    },
+});
+
+eventsCalender.attachSchema(Schema.eventsCalender,{transform: true});
+
+Schema.interestingFacts = new SimpleSchema({
+     publishDate:{
+         type:Date,
+         label: 'Date when to show',
+         optional:true
+     },
+     factIntroduction:{
+         type:String,
+         label: 'Breif Introduction'
+     },
+     factDescription:{
+         type:String,
+         label: 'Description'
+     },
+     factGenere:{
+         type:String,
+         label:'Genere',
+         allowedValues:['General',]
+     },
+     imageUrl:{
+         type:String,
+         label:'Image URL',
+         optional:true
+     },
+     factUrl:{
+         type:String,
+         label:"URL Path for more Information",
+         optional:true
+     }
+});
+
+interestingFacts.attachSchema(Schema.interestingFacts,{transform: true});
+
+Schema.quizs = new SimpleSchema({
+    publishDate:{
+        type:Date,
+        label: 'Date when to show',
+        optional:true
+    },
+    genere:{
+        type:String,
+        label:'Genere',
+        allowedValues:['General',]
+    },
+    question:{
+        type:String,
+        label: 'Questions'
+    },
+    option1:{
+        type:String,
+        label: 'option1'
+    },
+    option2:{
+        type:String,
+        label: 'option1'
+    },
+    option3:{
+        type:String,
+        label: 'option1'
+    },
+    option4:{
+        type:String,
+        label: 'option1'
+    },
+    answer:{
+        type:String,
+        label: 'Questions'
+    },
+    responseCorrect:{
+        type:String,
+        label: 'Response for Correct Answer'
+    },
+    responseWrong:{
+        type:String,
+        label: 'Response for Wrong Answer'
+    },
+    participants:{
+        type:[String],
+        optional:true
+    }
+
+});
+quizs.attachSchema(Schema.quizs,{transform: true});

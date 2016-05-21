@@ -1,0 +1,15 @@
+<template name="quiz">
+
+   {{#each quiz}}
+   <div class="quiz-content">
+       <div class="quiz-header">Quiz</div>
+       <div class="quiz-question">{{ question }}</div>
+       <div class="quiz-options">
+           <div id="quiz-option1" class="quiz-option">{{ option1 }}</div>
+           <div id="quiz-option2" class="quiz-option">{{ option2 }}</div>
+           <div id="quiz-option3" class="quiz-option">{{ option3 }}</div>
+           <div id="quiz-option4" class="quiz-option">{{ option4 }}</div>
+       </div>
+    </div>
+   {{/each}}
+</template>

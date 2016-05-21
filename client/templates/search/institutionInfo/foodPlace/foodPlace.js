@@ -1,10 +1,7 @@
 /**
- * Created by betha on 5/18/2016.
+ * Created by betha on 5/20/2016.
  */
-/**
- * Created by betha on 5/16/2016.
- */
-this.FoodPlaceController = RouteController.extend(
+this.foodPlacesController = RouteController.extend(
     {
         template:"foodPlace",
 
@@ -37,3 +34,5 @@ this.FoodPlaceController = RouteController.extend(
         }
     }
 );
+
+

@@ -1,9 +1,9 @@
 /**
  * Created by betha on 5/18/2016.
  */
-this.InstitutionsController = RouteController.extend(
+this.InstitutionListController = RouteController.extend(
     {
-        template:"institutions",
+        template:"institutionList",
 
         onBeforeAction: function() {
             this.next();
@@ -35,7 +35,7 @@ this.InstitutionsController = RouteController.extend(
     }
 );
 
-Template.institutions.helpers({
+Template.institutionList.helpers({
     institutions:function () {
         return institutions.find().fetch();
     },
@@ -43,7 +43,7 @@ Template.institutions.helpers({
 
 
 /*******************OnCreated*******************/
-Template.institutions.onCreated(function() {
+Template.institutionList.onCreated(function() {
     var self = this;
     Session.set("filterByCourse", 'All');
 
@@ -52,7 +52,7 @@ Template.institutions.onCreated(function() {
     });
 });
 
-Template.institutions.events({
+Template.institutionList.events({
         'change #filterByCourse' : function (event) {
             event.preventDefault();
             Session.set("filterByCourse", event.target.value);
