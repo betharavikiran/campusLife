@@ -10,30 +10,19 @@ accomodations = new Mongo.Collection("accomodations");
 foodPlaces = new Mongo.Collection("foodPlaces");
 eventsCalender = new Mongo.Collection( 'eventsCalender' );
 interestingFacts = new Mongo.Collection('interestingFacts');
-quizs = new Mongo.Collection('quizs')
+quizs = new Mongo.Collection('quizs');
+
+profiles = new Mongo.Collection('profiles');
+preferences = new Mongo.Collection('preferences');
+
+admins = new Mongo.Collection('admins');
+
 
 //
 //Tution
 
 Schema = {};
 SimpleSchema.debug = true;
-
-Schema.profile = new SimpleSchema({
-    user_id:{
-        type:String,
-    },
-  /*  search_keys:[],
-    interest_points:[]*/
-});
-
-Schema.preferences = new SimpleSchema({
-    user_id:{
-        type:String,
-    },
-    search_range:{
-        type:Number
-    }
-});
 
 Schema.courseDef = new SimpleSchema({
     course:{
@@ -268,7 +257,12 @@ Schema.courses = new SimpleSchema({
     course_type:{
        type:String,
        label:"Course Type",
-       allowedValues: ["Certification","Degree","Professional","Masters"],
+       allowedValues: ["Pre-Primary","Primary","Secondary","Certification","Degree","Professional","Masters"],
+    },
+    course_level:{
+        type:Number,
+        label:"Course Level",
+        allowedValues:[0,1,2,3,4]  // 0 is before Primary, 1 is Primary, 2 is Secondary, 3 is Degree, 4 is Masters, 5 is Professional
     },
     course_duration:{
         type:Number,
@@ -400,7 +394,101 @@ Schema.quizs = new SimpleSchema({
     participants:{
         type:[String],
         optional:true
+    },
+    participants_correct:{
+        type:[String],
+        optional:true
     }
 
 });
 quizs.attachSchema(Schema.quizs,{transform: true});
+
+
+Schema.education = new SimpleSchema({
+    institution_id: {
+        type: String
+    },
+    course: {
+        type: String,
+    },
+    start: {
+        type: Date,
+        defaultValue: new Date(),
+        label: 'Start Date'
+    },
+    end: {
+        type: Date,
+        optional: true,
+        custom: function () {
+            if (Meteor.isClient && this.isSet) {
+                if (this.field('start').value > this.value){
+                    return 'endGreaterThanStart';
+                }
+            }
+        },
+        label: 'End Date'
+    },
+    status:{
+        type:String,
+        label:"Eduction Status",
+        allowedValues: [ 'Ongoing', 'Completed','Dropped Out'],
+    }
+});
+
+Schema.profiles = new SimpleSchema({
+    user_id:{
+        type:String,
+        label: 'Facebook User ID', // User ID for login to facebook
+    },
+    birthDate: {
+        type: Date,
+        optional: true
+    },
+    secondary_education:{
+        type:Schema.education,
+        label:"Secondary Education",
+        optional: true
+    },
+    degree_education:{
+        type:Schema.education,
+        label:"Degree Education",
+        optional: true
+    },
+    masters_education:{
+        type:Schema.education,
+        label:"Master Education",
+        optional: true
+    },
+    interest_keywords:{
+        type:[String],
+        optional:true
+    }
+});
+
+profiles.attachSchema(Schema.profiles,{transform: true});
+
+Schema.preferences = new SimpleSchema({
+    user_id:{
+        type:String,
+        label: 'Facebook User ID', // User ID for login to facebook
+    },
+    search_distance: {
+        type: Number,
+        optional: true
+    },
+});
+
+
+preferences.attachSchema(Schema.preferences,{transform: true});
+
+Schema.admin = new SimpleSchema({
+    user_id:{
+        type:String,
+        label: 'Facebook User ID', // User ID for login to facebook
+    },
+    role:{
+        type:String,
+        label:"Role for Administration",
+        allowedValues:["SuperAdmin","Admin","Community Manager"]
+    },
+});

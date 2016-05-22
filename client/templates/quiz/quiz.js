@@ -57,7 +57,40 @@ Template.quiz.helpers({
 Template.quiz.events({
         'click #quiz-option1' : function (event) {
             event.preventDefault();
-            alert(event.valueOf().toString());
+            if(this.option1 == this.answer){
+               /* quizs.update({_id: this.id},
+                    {$push: {schema: {participants: "text", size: 7, name: name, label: "First Name2"}}})*/
+            }
+            else{
+                alert("Wrong ");
+            }
+        },
+        'click #quiz-option2' : function (event) {
+            event.preventDefault();
+            if(this.option2 == this.answer){
+                alert("Correct ");
+            }
+            else{
+                alert("Wrong ");
+            }
+        },
+        'click #quiz-option3' : function (event) {
+            event.preventDefault();
+            if(this.option3 == this.answer){
+                alert("Correct ");
+            }
+            else{
+                alert("Wrong ");
+            }
+        },
+        'click #quiz-option4' : function (event) {
+            event.preventDefault();
+            if(this.option4 == this.answer){
+                alert("Correct ");
+            }
+            else{
+                alert("Wrong ");
+            }
         },
     }
 );

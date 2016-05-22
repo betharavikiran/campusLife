@@ -2,7 +2,16 @@
     {{> sidebar}}
     <div class="rightcontent">
         <div class="maincontentwrap">
-            Preferences
+            <div class="narrowrap">
+                <h1 class="formhead">Prferences</h1>
+                {{#autoForm id="preferencesForm" schema="Schema.preferences"}}
+                    {{> afQuickField name='user_id' id='user_id'  value=meteor.userid type="hidden" }}
+                    <fieldset>
+                       {{> afQuickField name='search_distance' id='search_distance'}}
+                    </fieldset>
+                    <button type="submit" class="save" id='processing' >Save</button>
+                {{/autoForm}}
+            </div>
         </div>
     </div>
 </template>
