@@ -38,3 +38,31 @@ this.HomeController = RouteController.extend({
 
     }
 });
+
+/*******************OnCreated*******************/
+Template.home.onCreated(function() {
+
+    var self = this;
+    this.autorun(function() {
+            var subscriptionProfile = self.subscribe('profileByUserID',Meteor.userId());
+    });
+});
+
+
+Template.home.helpers({
+    communities:function () {
+        return profiles.findOne({"user_id":Meteor.userId()}).communities_subscribed;
+    },
+
+    courses:function(){
+        return courses.find({});
+    },
+    institutions:function(){
+        alert(institutions.find({}).count());
+        return institutions.find({});
+    },
+    course_display_level:function(){
+        return courses.findOne().display_Name;
+    }
+
+});

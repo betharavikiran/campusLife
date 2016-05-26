@@ -1,0 +1,40 @@
+<template name="addEducation">
+    <div class="addEducation">
+         {{#autoForm id="insertOrderDeliveryForm" schema="Schema.education"}}
+            <h3>{{course_display_level}}</h3>
+            <div class="form-group">
+                <label for="course">Course *</label>
+                <select firstoption='Select Course' name="course" id="course" required data-schema-key="course" value={{system_Name}} >
+                         <option value=''>Select course</option>
+                        {{#each courses}}
+                            <option value="{{system_Name}}" selected="{{ system_Name}}">{{display_Name}}</option>
+                        {{/each}}
+                </select>
+            </div>
+            <div class="form-group">
+                 <label for="institution">Institution *</label>
+                 <select firstoption='Select Institution' name="institution" id="institution" required data-schema-key="institution" value={{system_name}} >
+                     <option value=''>Select Institution</option>
+                     {{#each institutions}}
+                         <option value="{{system_name}}" selected="{{ system_name}}">{{name}}</option>
+                     {{/each}}
+                 </select>
+             </div>
+             <fieldset>
+                 {{> afQuickField name='course_start' id='course_start' }}
+                 {{> afQuickField name='course_end' id='course_end' }}
+             </fieldset>
+             <div class="form-group">
+                  <label for="status">Status *</label>
+                  <select firstoption='Select status' name="status" id="status">
+                     <option value="Ongoing"  selected="Ongoing">Ongoing</option>
+                      <option value="Completed" selected="Completed">Completed</option>
+                      <option value="Dropped Out" selected="Dropped Out">Dropped Out</option>
+                  </select>
+             </div>
+             <button type="submit" id="processing" >Save</button>
+
+             <button type="button" id="cancel" >Cancel</button>
+      {{/autoForm}}
+    </div>
+</template>

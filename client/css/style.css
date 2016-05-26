@@ -116,3 +116,22 @@
     font-size: smaller;
 
 }
+
+.education-record{
+    border: solid 1px lightgray;
+    padding:5px;
+    font-size: 14px;
+}
+
+.education-header{
+    font-size: 16px;
+    font-weight: 500;
+    border-bottom: 1px solid lightsalmon;
+    padding-bottom: 5px;
+}
+
+.education-content{
+    font-size: 14px;
+    font-weight: 400;
+    padding-top: 3px;
+}

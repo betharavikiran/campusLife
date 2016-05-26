@@ -48,7 +48,7 @@ Template.institutionList.onCreated(function() {
     Session.set("filterByCourse", 'All');
 
     this.autorun(function() {
-        var subscriptionCourses = self.subscribe('InstitutionsByCourse',Session.get('filterByCourse'));
+        var subscriptionCourses = self.subscribe('institutionsByCourse',Session.get('filterByCourse'));
     });
 });
 

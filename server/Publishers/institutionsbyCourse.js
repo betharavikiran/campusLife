@@ -1,17 +1,13 @@
 /**
  * Created by betha on 5/18/2016.
  */
-Meteor.publish('InstitutionsByCourse', function(course) {
+Meteor.publish('institutionsByCourse', function(courseName) {
+    console.log(courseName);
+    if(courseName=="All"){
+       return institutions.find();
+    }else{
 
-    if(course){
-        console.log(course);
-         if(course=="All"){
-            return institutions.find();
-         }
-         else{
-            var courseObject = courses.findOne({ course_keywords: course});
-            return institutions.find({courses:{ "$in" : [course]}});
-        }
-
+        console.log(institutions.find({ courses:{$elemMatch: {course:courseName}}}).count());
+        return institutions.find({ courses:{$elemMatch: {course:courseName}}});
     }
 });

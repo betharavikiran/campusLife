@@ -17,8 +17,10 @@ preferences = new Mongo.Collection('preferences');
 
 admins = new Mongo.Collection('admins');
 
-
-//
+// Books
+// Notifying students by college
+// Share your idea
+// Career path
 //Tution
 
 Schema = {};
@@ -33,11 +35,14 @@ Schema.courseDef = new SimpleSchema({
     }
 });
 
-
 Schema.institutions = new SimpleSchema({
     name:{
         type:String,
         label:"Institution Name"
+    },
+    system_name:{
+        type:String,
+        label:"Institution Internal Name"
     },
     institution_type:{
         type:String,
@@ -250,9 +255,13 @@ foodPlaces.attachSchema(Schema.foodPlaces, {transform: true});
 
 
 Schema.courses = new SimpleSchema({
-    name:{
+    display_Name:{
         type:String,
-        label:"Course Name"
+        label:"Course Display Name"
+    },
+    system_Name:{
+        type:String,
+        label:"internal System Name"
     },
     course_type:{
        type:String,
@@ -262,7 +271,7 @@ Schema.courses = new SimpleSchema({
     course_level:{
         type:Number,
         label:"Course Level",
-        allowedValues:[0,1,2,3,4]  // 0 is before Primary, 1 is Primary, 2 is Secondary, 3 is Degree, 4 is Masters, 5 is Professional
+        allowedValues:[0,1,2,3,4,5,6]  // 0 is before Primary, 1 is Primary, 2 is Secondary, 3 is Degree, 4 is Masters, 5 is Professional
     },
     course_duration:{
         type:Number,
@@ -280,18 +289,17 @@ Schema.communities = new SimpleSchema({
        type:String,
        label:"Community Name"
    },
+    system_name:{
+        type:String,
+        label:"Community System Name"
+    },
    community_type:{
         type:String,
         label:"Community Type",
         allowedValues:["Institution","Course"]
    },
-   entity_id:{
-        type:String, // link to the institution or course
-   },
-   memberships:{
-       type:[String]
-   }
 });
+communities.attachSchema(Schema.communities,{transform:true});
 
 Schema.eventsCalender = new SimpleSchema({
     'title': {
@@ -311,6 +319,19 @@ Schema.eventsCalender = new SimpleSchema({
         label: 'What type of event is this?',
         allowedValues: [ 'Institution', 'Students', 'Public', 'Private','Exam' ]
     },
+    'Venue':{
+        type: String,
+        optional:true
+    },
+    'notes':{
+        type: String,
+        label: 'Some instructions',
+        optional:true
+    },
+    'target_community':{
+        type:[String],
+        optional:true
+    }
 });
 
 eventsCalender.attachSchema(Schema.eventsCalender,{transform: true});
@@ -323,7 +344,7 @@ Schema.interestingFacts = new SimpleSchema({
      },
      factIntroduction:{
          type:String,
-         label: 'Breif Introduction'
+         label: 'Brief Introduction'
      },
      factDescription:{
          type:String,
@@ -405,18 +426,46 @@ quizs.attachSchema(Schema.quizs,{transform: true});
 
 
 Schema.education = new SimpleSchema({
-    institution_id: {
+
+    institution: {
         type: String
     },
     course: {
         type: String,
     },
-    start: {
+    course_level:{
+        type:Number,
+        label:"Course Level",
+        allowedValues:[0,1,2,3,4,5,6]
+    },
+    course_level_display:{
+        type:String,
+        label:"Level",
+        custom: function () {
+         if (this.field('course_level').value ==0){
+                return 'Pre-Primary';
+         }else if(this.field('course_level').value ==1) {
+             return 'Primary';
+         }else if(this.field('course_level').value ==2) {
+             return 'Secondary';
+         }else if(this.field('course_level').value ==3) {
+             return 'Certification';
+         }else if(this.field('course_level').value ==4) {
+             return 'Degree';
+         }else if(this.field('course_level').value ==5) {
+             return 'Professional';
+         }else if(this.field('course_level').value ==6) {
+             return 'Masters';
+         }
+        },
+    },
+
+    course_start: {
         type: Date,
         defaultValue: new Date(),
         label: 'Start Date'
     },
-    end: {
+    course_end: {
         type: Date,
         optional: true,
         custom: function () {
@@ -430,10 +479,14 @@ Schema.education = new SimpleSchema({
     },
     status:{
         type:String,
-        label:"Eduction Status",
+        label:"Course Status",
         allowedValues: [ 'Ongoing', 'Completed','Dropped Out'],
     }
 });
+
+Schema.community_subscription = new SimpleSchema({
+
+})
 
 Schema.profiles = new SimpleSchema({
     user_id:{
@@ -444,23 +497,16 @@ Schema.profiles = new SimpleSchema({
         type: Date,
         optional: true
     },
-    secondary_education:{
-        type:Schema.education,
-        label:"Secondary Education",
-        optional: true
-    },
-    degree_education:{
-        type:Schema.education,
-        label:"Degree Education",
-        optional: true
-    },
-    masters_education:{
-        type:Schema.education,
-        label:"Master Education",
+    educations:{
+        type:[Schema.education],
         optional: true
     },
     interest_keywords:{
         type:[String],
+        optional:true
+    },
+    communities_subscribed:{
+        type:[Schema.communities],
         optional:true
     }
 });
@@ -477,7 +523,6 @@ Schema.preferences = new SimpleSchema({
         optional: true
     },
 });
-
 
 preferences.attachSchema(Schema.preferences,{transform: true});
 

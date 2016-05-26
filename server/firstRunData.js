@@ -10,6 +10,7 @@ Meteor.startup(function() {
         var sample_institutions = [
             {
                 name:"Bullayya College",
+                system_name:"BULLAYYA_COLLEGE",
                 institution_type:"Degree College",
                 institution_est_year:"1965",
                 institution_govt_private:"Private",
@@ -25,10 +26,11 @@ Meteor.startup(function() {
                 institution_email:"bullayya.college@gmail.com",
                 institution_phone:"0891-2728692",
                 location: {"type": "Point", "coordinates": [17.728125, 83.310353]},
-                courses:[{course:"BA",specializations:["Arts","Psychology"]},{course:"BSC",specializations:["Botnay","Home Science"]}]
+                courses:[{course:"BA",specializations:["Arts","Psychology"]},{course:"BSC",specializations:["Botnay","Home Science"]},{course:"BCA",specializations:["Computers"]},{course:"BBA",specializations:["Management"]}]
             },
             {
                 name:"BVK College",
+                system_name:"BVK_COLLEGE",
                 institution_type:"Degree College",
                 institution_est_year:"1965",
                 institution_govt_private:"Private",
@@ -44,7 +46,7 @@ Meteor.startup(function() {
                 institution_email:"bvk.college@gmail.com",
                 institution_phone:"0891-2728492",
                 location: {"type": "Point", "coordinates": [17.728163, 83.310350]},
-                courses:[{course:"BA",specializations:["Arts","Psychology"]},{course:"BSC",specializations:["Botnay","Home Science"]}]
+                courses:[{course:"BA",specializations:["Arts","Psychology"]},{course:"BSC",specializations:["Botnay","Home Science"]},{course:"BBA",specializations:["Management"]}]
             },
         ];
 
@@ -53,6 +55,49 @@ Meteor.startup(function() {
         });
 
     }
+
+    if (communities.find().count() === 0) {
+
+        // create sample communities
+        var sample_communities = [
+            {
+                name:"Bullayya College",
+                system_name:"BULLAYYA_COLLEGE",
+                community_type:"Institution",
+            },
+            {
+                name:"BVK College",
+                system_name:"BVK_COLLEGE",
+                community_type:"Institution",
+            },
+            {
+                name:"Bachelors of Computer Applications",
+                system_name:"BCA",
+                community_type:"Course",
+            },
+            {
+                name:"Bachelors of Business Administration",
+                system_name:"BBA",
+                community_type:"Course",
+            },
+            {
+                name:"Masters of Business Administration",
+                system_name:"MBA",
+                community_type:"Course",
+            },
+            {
+                name:"Masters of Computer Applications",
+                system_name:"MCA",
+                community_type:"Course",
+            },
+        ];
+
+        _.each(sample_communities, function(community) {
+            communities.insert(community);
+        });
+    }
+    
+    
 
     if (accomodations.find().count() === 0) {
 
@@ -150,26 +195,34 @@ Meteor.startup(function() {
         // create sample employees
         var sample_courses = [
             {
-                name:"Bachelors of Computer Applications",
+                display_Name:"Bachelors of Computer Applications",
+                system_Name:"BCA",
                 course_type:"Degree",
+                course_level:4,
                 course_duration:36,
                 course_keywords:["BCA"]
             },
             {
-                name:"Bachelors of Business Administration",
+                display_Name:"Bachelors of Business Administration",
+                system_Name:"BBA",
                 course_type:"Degree",
+                course_level:4,
                 course_duration:36,
                 course_keywords:["BBA"]
             },
             {
-                name:"Masters of Business Administration",
+                display_Name:"Masters of Business Administration",
+                system_Name:"MBA",
                 course_type:"Masters",
+                course_level:6,
                 course_duration:24,
                 course_keywords:["MBA"]
             },
             {
-                name:"Masters of Computer Applications",
+                display_Name:"Masters of Computer Applications",
+                system_Name:"MCA",
                 course_type:"Masters",
+                course_level:6,
                 course_duration:24,
                 course_keywords:["MCA"]
             },
@@ -181,8 +234,8 @@ Meteor.startup(function() {
    }
 
     if (eventsCalender.find().count() === 0) {
-        var sample_events =[ { title: 'Bullayya Fest', start: '2016-05-03', end: '2016-05-12', editable: false, type: 'Institution'},
-        { title: 'AIIMS Exam', start: '2016-05-27', end: '2016-05-27', editable: false, type: 'Exam' }];
+        var sample_events =[ { title: 'Bullayya Fest', start: '2016-05-03', end: '2016-05-12', editable: false, type: 'Institution',notes:"Outsiders would need a pass"},
+        { title: 'AIIMS Exam', start: '2016-05-27', end: '2016-05-27', editable: false, type: 'Exam',notes:"Excam starts are 9 am." }];
 
         _.each(sample_events, function(event) {
             eventsCalender.insert(event);

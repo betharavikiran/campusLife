@@ -4,34 +4,23 @@
         <div class="maincontentwrap">
             <div class="narrowrap">
                 <h1 class="formhead">Profile</h1>
-                {{#autoForm id="profileForm" schema="Schema.profiles"}}
-                    {{> afQuickField name='user_id' id='user_id'  value=meteor.userid type="hidden" }}
-                    <fieldset>
-                        <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#basic">Basic Information</a></li>
-                            <li><a data-toggle="tab" href="#degree">Degree</a></li>
-                            <li><a data-toggle="tab" href="#masters">Masters</a></li>
-                            <li><a data-toggle="tab" href="#interests">Interests</a></li>
-                        </ul>
-                        <div class="tab-content">
-                            <div id="basic" class="tab-pane fade in active">
-                                <br>
-                                {{> afQuickField name='birthDate' id='birthDate'}}
-                                {{> afQuickField name='secondary_education' id='secondary_education'}}
-                            </div>
-                            <div id="degree" class="tab-pane fade">
-                                {{> afQuickField name='degree_education' id='degree_education'}}
-                            </div>
-                            <div id="masters" class="tab-pane fade">
-                                {{> afQuickField name='masters_education' id='masters_education'}}
-                            </div>
-                            <div id="interests" class="tab-pane fade">
-                                {{> afQuickField name='interest_keywords' id='interest_keywords'}}
-                            </div>
-                        </div>
-                    </fieldset>
-                    <button type="submit" class="save" id='processing' >Save</button>
-                {{/autoForm}}
+                <div class="institutions">
+                    <Legend>Education</Legend>
+                    <div class="right">
+                        <a id="add-education"><i class="fa fa-plus-square-o" aria-hidden="true"></i>Add</a>
+                    </div>
+                    <br>
+                    {{#if isAdding}}
+                        {{>addEducation}}
+                    {{/if}}
+
+                    <br>
+                    <div class="display-list">
+                        {{#each educations}}
+                            {{>viewEducation}}
+                        {{/each}}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

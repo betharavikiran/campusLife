@@ -1,8 +1,16 @@
 <template name="home">
     {{> sidebar}}
     <div class="rightcontent">
+        <legend>Community Membership</legend>
+        {{#each communities}}
+            {{name}}
+            {{community_type}}
+            <br>
+        {{/each}}
         <div class="maincontentwrap">
             {{>interestingFact}}
+
+
             <div class="row">
                 <div class="col-sm-12">
                 <div class="col-sm-6">{{> eventsCalender}}</div>

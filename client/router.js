@@ -102,6 +102,24 @@ Router.map(function () {
         }
     } });
 
+    this.route("addEducation", {path: "/addEducation", controller: "AddEducationController",action : function(){
+        var currentUser = Meteor.userId();
+        if(currentUser) {
+            this.render();
+        }else{
+            Router.go('login');
+        }
+    } });
+
+    this.route("editProfile", {path: "/editProfile", controller: "EditProfileController",action : function(){
+        var currentUser = Meteor.userId();
+        if(currentUser) {
+            this.render();
+        }else{
+            Router.go('login');
+        }
+    } });
+
     this.route("preferences", {path: "/preferences", controller: "PreferencesController",action : function(){
         var currentUser = Meteor.userId();
         if(currentUser) {
